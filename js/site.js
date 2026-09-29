@@ -213,16 +213,25 @@ function initHome() {
   const dots = hero.querySelectorAll(".hero-dots button");
   let current = 0;
 
+  // Saari slides ki photos pehle se load kar lo, taaki slide badalte waqt kaala na dikhe
+  SLIDES.forEach(([id]) => { new Image().src = `images/cars/${id}.jpg`; });
+
   function goTo(n) {
-    // Purani slide 1 second tak peeche dikhti rahe, jab tak nayi slide aa jaaye
+    if (n === current) return;
+    // Purani slide peeche dikhti rahe, jab tak nayi slide poori tarah aa na jaaye
     const old = slides[current];
     old.classList.remove("active");
     old.classList.add("leaving");
-    setTimeout(() => old.classList.remove("leaving"), 1000);
     dots[current].classList.remove("active");
     current = (n + slides.length) % slides.length;
-    slides[current].classList.add("active");
+    const next = slides[current];
+    next.classList.remove("leaving");
+    next.classList.add("active");
     dots[current].classList.add("active");
+
+    const done = () => { if (!old.classList.contains("active")) old.classList.remove("leaving"); };
+    next.addEventListener("animationend", done, { once: true });
+    setTimeout(done, 2500); // backup, agar animation event na aaye
   }
 
   let timer = setInterval(() => goTo(current + 1), 5000);
