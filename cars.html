@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Our Cars | DWON Cars (Demo)</title>
+  <link rel="icon" href="images/logo/dwon-emblem.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Saira+Stencil+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="cars">
+  <div id="header"></div>
+
+  <section class="section brabus-band">
+    <div class="container">
+      <div class="section-title">
+        <div class="eyebrow" id="segEyebrow"></div>
+        <h2 class="heading red" id="segTitle"></h2>
+        <p id="segSubtitle"></p>
+      </div>
+      <div class="seg-buttons" id="segButtons"></div>
+      <div class="toolbar">
+        <select id="sort" aria-label="Sort by">
+          <option value="power">Sort: Most powerful</option>
+          <option value="low">Sort: Price low to high</option>
+          <option value="high">Sort: Price high to low</option>
+        </select>
+      </div>
+      <div class="grid" id="carGrid"></div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="js/config.js"></script>
+  <script src="js/cars-data.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

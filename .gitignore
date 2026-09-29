@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+
+# Purani Python copy (asli wali python-version/ mein hai)
+/main.py

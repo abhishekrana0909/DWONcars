@@ -1,0 +1,247 @@
+/* ============================================================
+   DWON Cars: poori website ka design (dark + laal)
+   Rang badalne ho toh sirf neeche :root mein badlo.
+   ============================================================ */
+
+:root {
+  --red: #e10600;
+  --red-dark: #8a0000;
+  --black: #0a0a0a;
+  --card: #121212;
+  --line: #242424;
+  --text: #f2f2f2;
+  --muted: #9a9a9a;
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  line-height: 1.55;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.red { color: var(--red); }
+.muted { color: var(--muted); }
+.heading { font-family: "Rajdhani", sans-serif; font-weight: 700; letter-spacing: .5px; line-height: 1.05; margin: 0; }
+.brand-font { font-family: "Saira Stencil One", sans-serif; font-weight: 400; }
+.eyebrow { color: var(--red); font-weight: 700; letter-spacing: 3px; font-size: 13px; text-transform: uppercase; }
+.container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 72px 0; }
+.icon { font-family: "Material Symbols Rounded"; font-weight: normal; font-style: normal; line-height: 1;
+        display: inline-block; vertical-align: middle; font-size: 22px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+  padding: 12px 22px; border-radius: 10px; font-weight: 600; font-size: 15px;
+  text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: .2s;
+  font-family: inherit;
+}
+.btn-red { background: var(--red); color: #fff; }
+.btn-red:hover { background: #ff1a10; box-shadow: 0 10px 30px -10px rgba(225,6,0,.8); }
+.btn-outline { border-color: #fff; color: #fff; background: transparent; }
+.btn-outline:hover { background: #fff; color: #000; }
+.btn-black { background: #000; color: #fff; }
+.btn-lg { padding: 15px 28px; font-size: 17px; }
+.btn-sm { padding: 8px 14px; font-size: 14px; }
+
+/* ---------- Demo banner (sample website hai, asli business nahi) ---------- */
+.demo-banner {
+  background: repeating-linear-gradient(135deg, #e10600 0 18px, #b80500 18px 36px);
+  color: #fff; text-align: center; font-size: 14px; padding: 8px 16px; letter-spacing: .3px;
+}
+.demo-note { border: 1px dashed #5a1a1a; border-radius: 10px; padding: 10px 14px; margin: 0 0 18px;
+             font-size: 13px; color: #c9a3a3; text-align: center; }
+
+/* ---------- Top bar + header ---------- */
+.topbar { background: #000; border-bottom: 1px solid #1c1c1c; font-size: 13px; color: #bbb; }
+.topbar .container { display: flex; justify-content: space-between; gap: 16px; padding-top: 8px; padding-bottom: 8px; }
+.topbar span { margin-right: 18px; }
+.header { position: sticky; top: 0; z-index: 50; background: rgba(10,10,10,.97); border-bottom: 1px solid #1f1f1f; }
+.header .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo img { width: 58px; height: 58px; filter: drop-shadow(0 0 10px rgba(225,6,0,.45)); }
+.logo-name { font-size: 30px; line-height: 1; color: #fff; letter-spacing: 1.5px; }
+.logo-name span { color: var(--red); }
+.logo-sub { font-size: 10px; letter-spacing: 2.5px; color: var(--muted); margin-top: 4px; }
+.nav { display: flex; gap: 28px; }
+.nav a { text-decoration: none; font-weight: 600; color: #e8e8e8; padding: 6px 0; border-bottom: 2px solid transparent; transition: .2s; }
+.nav a:hover, .nav a.active { color: var(--red); border-bottom-color: var(--red); }
+.menu-btn { display: none; background: none; border: 0; color: #fff; cursor: pointer; }
+.menu-btn .icon { font-size: 32px; }
+
+/* ---------- Hero slider ---------- */
+.hero { position: relative; height: 78vh; min-height: 520px; max-height: 820px; overflow: hidden; background: #000; perspective: 1600px; }
+.slide {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  opacity: 0; visibility: hidden;
+}
+.slide::before { /* kaala shade taaki text saaf dikhe */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.6) 45%, rgba(0,0,0,.15) 100%);
+}
+.slide.active { opacity: 1; visibility: visible; z-index: 2; animation: slideIn 1s cubic-bezier(.2,.8,.2,1); }
+.slide.leaving { opacity: 1; visibility: visible; z-index: 1; } /* purani slide peeche dikhti rahe, kaala flash na aaye */
+/* Halka sa 3D ghoomna (pehle se bahut kam) */
+@keyframes slideIn {
+  from { transform: rotateY(-14deg) scale(.96); opacity: 0; }
+  to   { transform: rotateY(0) scale(1); opacity: 1; }
+}
+.hero-content { position: relative; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.hero-text { max-width: 620px; }
+.hero-title { font-size: clamp(44px, 6.5vw, 86px); margin: 12px 0; }
+.hero-desc { font-size: 18px; color: #d6d6d6; margin: 0 0 26px; }
+.hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-logo { width: clamp(180px, 22vw, 290px); filter: drop-shadow(0 0 40px rgba(225,6,0,.55)); animation: float 5s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-12px); } }
+.hero-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+  background: rgba(0,0,0,.45); border: 1px solid #333; color: #fff; width: 44px; height: 44px;
+  border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.hero-arrow:hover { background: var(--red); border-color: var(--red); }
+.hero-arrow.prev { left: 14px; }
+.hero-arrow.next { right: 14px; }
+.hero-dots { position: absolute; bottom: 70px; left: 0; right: 0; display: flex; justify-content: center; gap: 10px; z-index: 5; }
+.hero-dots button { width: 10px; height: 10px; border-radius: 50%; border: 0; background: rgba(255,255,255,.45); cursor: pointer; padding: 0; }
+.hero-dots button.active { background: var(--red); width: 28px; border-radius: 6px; }
+
+/* ---------- Stats ---------- */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: -50px; position: relative; z-index: 6; }
+.stat {
+  text-align: center; padding: 30px 20px; border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(225,6,0,.22), rgba(20,20,20,.95));
+  border: 1px solid rgba(225,6,0,.35);
+}
+.stat .icon { color: var(--red); font-size: 34px; }
+.stat-num { font-family: "Rajdhani", sans-serif; font-weight: 700; font-size: 48px; color: var(--red); line-height: 1.1; }
+.stat-title { font-weight: 600; font-size: 18px; }
+
+/* ---------- Section titles ---------- */
+.section-title { text-align: center; margin-bottom: 40px; }
+.section-title h2 { font-size: clamp(32px, 4.5vw, 52px); margin: 10px 0; }
+.section-title p { max-width: 680px; margin: 0 auto; color: var(--muted); }
+.row-title { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 30px; }
+.row-title h3 { font-size: clamp(24px, 3vw, 34px); margin-top: 6px; }
+.brabus-band { background: radial-gradient(ellipse at top, rgba(225,6,0,.18), transparent 60%), #0d0d0d; }
+
+/* ---------- Car cards ---------- */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.car-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  transition: transform .25s, border-color .25s, box-shadow .25s; display: flex; flex-direction: column;
+}
+.car-card:hover { transform: translateY(-6px); border-color: var(--red); box-shadow: 0 18px 40px -18px rgba(225,6,0,.55); }
+.car-photo { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: #000; }
+.car-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.car-card:hover .car-photo img { transform: scale(1.06); }
+.tag { position: absolute; top: 12px; left: 12px; background: var(--red); color: #fff; font-size: 11px; font-weight: 700;
+       border-radius: 6px; padding: 3px 8px; letter-spacing: .5px; }
+.tag.brabus { left: auto; right: 12px; background: #000; border: 1px solid var(--red); }
+.car-body { padding: 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.car-name { font-size: 24px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.chip { background: #1c1c1c; border: 1px solid #2a2a2a; border-radius: 999px; padding: 3px 10px; font-size: 12px; color: #ddd; }
+.car-bottom { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: auto;
+              padding-top: 14px; border-top: 1px solid #262626; }
+.price { font-family: "Rajdhani", sans-serif; font-size: 26px; font-weight: 700; }
+.per-day { font-size: 12px; color: var(--muted); }
+.card-buttons { display: flex; gap: 8px; }
+
+/* ---------- 3D showroom ---------- */
+.showroom {
+  position: relative; height: 480px; border-radius: 22px; border: 1px solid #262626; overflow: hidden;
+  background: radial-gradient(circle at 50% 65%, #2a0000 0%, #0a0a0a 65%);
+}
+.showroom canvas { display: block; width: 100% !important; height: 100% !important; cursor: grab; }
+.showroom-loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--muted); }
+.showroom-hint { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: 13px; color: var(--muted); pointer-events: none; }
+
+/* ---------- Steps / info cards ---------- */
+.dark-card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px; }
+.step-top { display: flex; justify-content: space-between; align-items: center; }
+.step-top .icon { color: var(--red); font-size: 36px; }
+.step-num { font-family: "Rajdhani", sans-serif; font-weight: 700; font-size: 44px; color: #2a2a2a; }
+.req { display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; }
+.req ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+
+/* ---------- CTA + footer ---------- */
+.cta { background: var(--red); }
+.cta .container { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 44px; padding-bottom: 44px; flex-wrap: wrap; }
+.footer { background: #050505; border-top: 3px solid var(--red); }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1.2fr; gap: 40px; padding: 56px 20px 30px; }
+.footer a { color: #bbb; text-decoration: none; display: block; margin: 6px 0; }
+.footer a:hover { color: var(--red); }
+.footer a.logo { display: flex; margin: 0 0 12px; }
+.footer h4 { font-family: "Rajdhani", sans-serif; font-size: 22px; margin: 0 0 10px; }
+.copyright { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; padding: 0 20px 24px; font-size: 14px; color: var(--muted); }
+
+/* ---------- Segment page ---------- */
+.seg-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+.seg-buttons a { text-decoration: none; border: 1px solid #fff; border-radius: 999px; padding: 8px 18px; font-weight: 600; }
+.seg-buttons a.active { background: var(--red); border-color: var(--red); }
+.toolbar { display: flex; justify-content: flex-end; margin-bottom: 18px; }
+select, input, textarea {
+  width: 100%; background: #0e0e0e; color: #fff; border: 1px solid #333; border-radius: 10px;
+  padding: 13px 14px; font: inherit; color-scheme: dark;
+}
+select:focus, input:focus, textarea:focus { outline: none; border-color: var(--red); }
+.toolbar select { width: auto; min-width: 220px; }
+
+/* ---------- Car detail page ---------- */
+.detail { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; margin-top: 20px; }
+.detail-photo { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 3; }
+.detail-photo img { width: 100%; height: 100%; object-fit: cover; }
+.detail h1 { font-size: clamp(34px, 4vw, 50px); margin: 8px 0; }
+.prices { display: flex; gap: 30px; align-items: flex-end; margin: 18px 0; }
+.specs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; }
+.spec { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid #222; padding: 12px 0; }
+.spec b { text-align: right; }
+
+/* ---------- Booking ---------- */
+.book-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 28px; }
+.form { display: grid; gap: 14px; }
+.form label { font-size: 13px; color: var(--muted); display: grid; gap: 6px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.check { display: flex !important; grid-template-columns: none; align-items: center; gap: 10px !important; color: #ddd !important; font-size: 15px !important; }
+.check input { width: 18px; height: 18px; accent-color: var(--red); }
+.summary img { border-radius: 12px; aspect-ratio: 16 / 10; object-fit: cover; width: 100%; background: #000; }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #1d1d1d; border: 1px solid var(--red);
+         padding: 12px 20px; border-radius: 10px; z-index: 100; display: none; }
+
+/* ---------- Contact ---------- */
+.contact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.contact-card { text-decoration: none; }
+.contact-card .icon { color: var(--red); font-size: 36px; }
+
+/* ---------- Mobile / tablet ---------- */
+@media (max-width: 1000px) {
+  .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #0a0a0a; flex-direction: column;
+         gap: 0; border-bottom: 2px solid var(--red); }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 20px; border-bottom: 1px solid #1c1c1c; }
+  .menu-btn { display: block; }
+  .grid, .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .detail, .book-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .hide-sm { display: none; }
+  .logo img { width: 46px; height: 46px; }
+  .logo-name { font-size: 24px; }
+  .logo-sub { display: none; }
+  .header .btn-red { display: none; }
+  .hero { height: 82vh; }
+  .hero-content { flex-direction: column-reverse; justify-content: center; align-items: flex-start; gap: 16px; }
+  .hero-logo { width: 96px; }
+  .hero-arrow { display: none; }
+  .stats, .grid, .contact-grid, .specs, .two, .footer-grid { grid-template-columns: 1fr; }
+  .section { padding: 56px 0; }
+  .showroom { height: 360px; }
+  .row-title { flex-direction: column; align-items: flex-start; }
+}

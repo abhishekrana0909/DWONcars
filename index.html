@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DWON Cars (Demo) | Sample Car Rental Website</title>
+  <meta name="description" content="Demo website: a sample car rental project featuring BRABUS and Mercedes-Benz cars. Not a real business.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="images/logo/dwon-emblem.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Saira+Stencil+One&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- three.js (3D showroom ke liye) -->
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body data-page="home">
+  <div id="header"></div>
+
+  <!-- Hero slider (script.js isme slides bharta hai) -->
+  <section class="hero" id="hero"></section>
+
+  <!-- Teen stats -->
+  <div class="container">
+    <div class="stats">
+      <div class="stat"><span class="icon">local_fire_department</span><div class="stat-num" id="brabusCount">15</div>
+        <div class="stat-title">BRABUS Models</div><div class="muted">750 to 1000 hp</div></div>
+      <div class="stat"><span class="icon">directions_car</span><div class="stat-num" id="carCount">28</div>
+        <div class="stat-title">Mercedes Cars</div><div class="muted">Sedans, SUVs, sports and BRABUS</div></div>
+      <div class="stat"><span class="icon">3d_rotation</span><div class="stat-num">360°</div>
+        <div class="stat-title">3D Showroom</div><div class="muted">Spin a car right in your browser</div></div>
+    </div>
+  </div>
+
+  <!-- BRABUS collection (sabse zyada focus) -->
+  <section class="section brabus-band" style="margin-top:60px">
+    <div class="container">
+      <div class="section-title">
+        <div class="eyebrow">« The BRABUS Collection »</div>
+        <h2 class="heading"><span class="red">BRABUS</span> Modified Mercedes</h2>
+        <p>Every car here was hand-tuned by BRABUS in Bottrop, Germany. More power, carbon body kits,
+           forged wheels and bespoke interiors.</p>
+      </div>
+      <div class="grid" id="brabusGrid"></div>
+      <div style="text-align:center;margin-top:40px">
+        <a class="btn btn-red btn-lg" href="cars.html?type=modified" id="brabusAll">See all BRABUS cars</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D showroom -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <div class="eyebrow">« Virtual Showroom »</div>
+        <h2 class="heading"><span class="red">360°</span> Take A Spin</h2>
+        <p>Drag the car with your mouse or finger to look around it. Scroll or pinch to zoom.</p>
+      </div>
+      <div class="showroom" id="showroom">
+        <div class="showroom-loading">Loading 3D car...</div>
+        <div class="showroom-hint">🖱️ Drag to rotate · Scroll to zoom</div>
+      </div>
+      <p class="muted" style="font-size:12px;text-align:center;margin-top:10px">
+        3D model: <a href="https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept" target="_blank">Car Concept</a>
+        by Eric Chadwick / Darmstadt Graphics Group, licensed
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a> (repainted black).
+      </p>
+    </div>
+  </section>
+
+  <!-- Baaki segments -->
+  <section class="section" style="padding-top:20px">
+    <div class="container">
+      <div class="row-title">
+        <div><div class="eyebrow">Sports Cars</div><h3 class="heading">Mercedes-AMG coupés, roadsters and sports sedans.</h3></div>
+        <a class="btn btn-outline btn-sm" href="cars.html?type=sports">View all →</a>
+      </div>
+      <div class="grid" id="sportsGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:20px">
+    <div class="container">
+      <div class="row-title">
+        <div><div class="eyebrow">SUVs</div><h3 class="heading">From the compact GLA to the legendary G 63.</h3></div>
+        <a class="btn btn-outline btn-sm" href="cars.html?type=suv">View all →</a>
+      </div>
+      <div class="grid" id="suvGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:20px">
+    <div class="container">
+      <div class="row-title">
+        <div><div class="eyebrow">Sedans</div><h3 class="heading">C-Class to Maybach. Comfort for every trip.</h3></div>
+        <a class="btn btn-outline btn-sm" href="cars.html?type=sedan">View all →</a>
+      </div>
+      <div class="grid" id="sedanGrid"></div>
+    </div>
+  </section>
+
+  <!-- 3 steps -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <div class="eyebrow">« Simple Process »</div>
+        <h2 class="heading"><span class="red">Rent A Car</span> In 3 Steps</h2>
+      </div>
+      <div class="grid">
+        <div class="dark-card"><div class="step-top"><span class="icon">search</span><span class="step-num">01</span></div>
+          <h3 class="heading" style="font-size:24px">Choose your car</h3>
+          <p class="muted">Pick a BRABUS, sports car, SUV or sedan from our fleet.</p></div>
+        <div class="dark-card"><div class="step-top"><span class="icon">badge</span><span class="step-num">02</span></div>
+          <h3 class="heading" style="font-size:24px">Share documents</h3>
+          <p class="muted">Send your driving licence and passport or Emirates ID on WhatsApp.</p></div>
+        <div class="dark-card"><div class="step-top"><span class="icon">key</span><span class="step-num">03</span></div>
+          <h3 class="heading" style="font-size:24px">We deliver</h3>
+          <p class="muted">The car arrives at your hotel, home or the airport. Enjoy!</p></div>
+      </div>
+
+      <div class="dark-card req" style="margin-top:30px">
+        <div><div class="eyebrow">What you need</div><h3 class="heading" style="font-size:30px">Rental requirements in Dubai</h3></div>
+        <ul>
+          <li>✅ Age 25+ (30+ for BRABUS cars)</li>
+          <li>✅ Valid UAE or International Driving Licence</li>
+          <li>✅ Passport with visa, or Emirates ID</li>
+          <li>✅ Refundable security deposit (depends on car)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div>
+        <h2 class="heading" style="font-size:40px">Ready to drive a BRABUS?</h2>
+        <div>This is a demo project: the buttons show how booking would work.</div>
+      </div>
+      <div class="hero-buttons">
+        <a class="btn btn-black btn-lg" id="ctaWhatsapp" target="_blank"><span class="icon">chat</span> WhatsApp Us</a>
+        <a class="btn btn-outline btn-lg" href="book.html"><span class="icon">event</span> Book Online</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/cars-data.js"></script>
+  <script src="js/site.js"></script>
+  <script type="module" src="js/showroom3d.js"></script>
+</body>
+</html>

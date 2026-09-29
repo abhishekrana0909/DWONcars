@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- DWON Cars emblem: horned shield, angry headlight eyes, clawed "D", fangs -->
+  <defs>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff2a1a"/>
+      <stop offset="0.55" stop-color="#e10600"/>
+      <stop offset="1" stop-color="#8a0000"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#262626"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Horned shield: red outer edge -->
+  <polygon fill="url(#red)" points="100,22 128,30 150,32 190,4 176,52 176,104 100,196 24,104 24,52 10,4 50,32 72,30"/>
+  <!-- Horned shield: black inside -->
+  <polygon fill="url(#steel)" points="100,35 126,42 148,44 169,29 164,57 164,100 100,180 36,100 36,57 31,29 52,44 74,42"/>
+
+  <!-- Angry headlight eyes -->
+  <polygon fill="url(#red)" points="50,58 88,68 86,76 54,68"/>
+  <polygon fill="url(#red)" points="150,58 112,68 114,76 146,68"/>
+
+  <!-- Angular D -->
+  <path fill="url(#red)" fill-rule="evenodd"
+        d="M70 86 L118 86 L134 101 L134 123 L118 138 L70 138 Z
+           M87 101 L111 101 L117 107 L117 117 L111 123 L87 123 Z"/>
+
+  <!-- Claw marks slicing the D -->
+  <g stroke="#0b0b0b" stroke-width="4.5" stroke-linecap="round">
+    <path d="M66 128 L110 84"/>
+    <path d="M80 140 L128 92"/>
+    <path d="M98 142 L138 102"/>
+  </g>
+
+  <!-- Fangs -->
+  <polygon fill="url(#red)" points="80,144 94,144 87,164"/>
+  <polygon fill="url(#red)" points="106,144 120,144 113,164"/>
+</svg>
